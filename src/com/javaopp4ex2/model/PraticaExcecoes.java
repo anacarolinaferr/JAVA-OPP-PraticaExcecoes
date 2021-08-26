@@ -1,9 +1,6 @@
 package com.javaopp4ex2.model;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class PraticaExcecoes extends RuntimeException {
 
@@ -21,11 +18,15 @@ public class PraticaExcecoes extends RuntimeException {
     }
 
     public static void dividir(int a, int b) {
-        if (b == 0) {
-            throw new IllegalArgumentException("Não pode ser dividido por zero!");
-        } else {
-            double result = a / b;
-            System.out.println(result);
+        try {
+            if (b == 0) {
+                throw new IllegalArgumentException();
+            } else {
+                double result = a / b;
+                System.out.println(result);
+            }
+        } catch (IllegalArgumentException il) {
+            System.out.println("Não pode ser dividido por zero!");
         }
     }
 
@@ -68,37 +69,29 @@ public class PraticaExcecoes extends RuntimeException {
         }
     }
 
-    public static void maximo() {
-        double a = 65d;
-        double b = 98d;
-        System.out.println(Math.max(a, b));
+    public static void maximo(double a, double b) {
+        System.out.printf("Máximo entre " + a + " e " + b + " => %.0f\n", Math.max(a, b));
     }
 
-    public static void minimo() {
-        double a = 28d;
-        double b = 47d;
-        System.out.println(Math.min(a, b));
+    public static void minimo(double a, double b) {
+        System.out.printf("Mínimo entre " + a + " e " + b + " => %.0f\n", Math.min(a, b));
     }
 
-    public static void potencia() {
-        double a = 5d;
-        double b = 2d;
-        System.out.println(Math.pow(a, b));
+    public static void potencia(double a, double b) {
+        System.out.printf("Potência de " + a + " e " + b + " => %.0f\n", Math.pow(a, b));
     }
 
-    public static void cosseno() {
-        double a = 180d;
+    public static void cosseno(double a) {
         a = Math.toRadians(a);
-        System.out.println("Math.cos(" + a + ")=" + Math.cos(a));
+        System.out.printf("Cosseno Math.cos(" + a + ") => %.0f\n", Math.cos(a));
     }
 
-    public static void raiz() {
-        double a = 25d;
-        System.out.println(Math.sqrt(a));
+    public static void raiz(double a) {
+        System.out.printf("Raiz de " + a + "=> %.0f\n", Math.sqrt(a));
     }
 
     public static void aleatorio() {
         double numeroAleatorio = Math.random() * 1000;
-        System.out.printf("%.0f\n", numeroAleatorio);
+        System.out.printf("Número aleatório de 1 a 999 => %.0f\n", numeroAleatorio);
     }
 }
